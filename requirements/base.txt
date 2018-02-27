@@ -7,20 +7,20 @@ six==1.11.0
 # django
 django==1.11.7
 django-environ==0.4.4
-django-model-utils==3.0.0
+django-model-utils==3.1.1
 django-cors-headers==2.1.0
-django-parler==1.9.1
+django-parler==1.9.2
 djangorestframework==3.7.7
-drf_yasg==1.4.0
+drf_yasg==1.4.4
 awesome-slugify==1.6.5
 polib==1.1.0
 
 # authentication, TODO remove
-argon2-cffi==16.3.0
-django-allauth==0.34.0
+argon2-cffi==18.1.0
+django-allauth==0.35.0
 
 # postgreSQL database adapter
-psycopg2==2.7.3.2
+psycopg2==2.7.4
 
 # static files
 whitenoise==3.3.1
@@ -31,10 +31,10 @@ redis>=2.10.6
 
 # front end tech, TODO remove
 django-crispy-forms==1.7.0
-Pillow==4.3.0
+Pillow==5.0.0
 
 # Time zones support, TODO remove
-pytz==2017.3
+pytz==2018.3
 
 # testing, TODO move to test.txt
 lazy-object-proxy==1.3.1
@@ -44,8 +44,8 @@ parse==1.8.2
 parse-type==0.4.2
 
 # code analysis, TODO move or remove
-astroid==1.6.0
-isort==4.2.15
+astroid==1.6.1
+isort==4.3.4
 
 # TODO remove
 wrapt==1.10.11
