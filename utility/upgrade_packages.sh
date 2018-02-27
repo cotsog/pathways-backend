@@ -1,6 +1,8 @@
 #!/bin/bash
 
 main() {
+    print_message "Always run in the local environment"
+
     handle_command_line_argument $1
     upgrade_requirement_files
     install_packages_in_clean_environment
