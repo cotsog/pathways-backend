@@ -15,6 +15,9 @@ drf_yasg==1.4.4
 awesome-slugify==1.6.5
 polib==1.1.0
 
+# wagtail cms
+wagtail==1.13.1
+
 # authentication, TODO remove
 argon2-cffi==18.1.0
 django-allauth==0.35.0
