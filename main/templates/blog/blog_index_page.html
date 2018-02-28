@@ -1,0 +1,5 @@
+<div>Index page title {{ page.title }}</div>
+
+{% for entry in blog_entries %}
+    <div>Child page: {{ entry.title }}</div>
+{% endfor %}
