@@ -3,13 +3,18 @@ from django.db import models
 from modelcluster.fields import ParentalKey
 
 from wagtail.wagtailcore.models import Page, Orderable
-from wagtail.wagtailcore.fields import RichTextField
-from wagtail.wagtailadmin.edit_handlers import FieldPanel, MultiFieldPanel, InlinePanel
+from wagtail.wagtailcore.fields import RichTextField, StreamField
+from wagtail.wagtailcore import blocks
+from wagtail.wagtailadmin.edit_handlers import FieldPanel, MultiFieldPanel, InlinePanel, StreamFieldPanel
 from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
+from wagtail.wagtailimages.blocks import ImageChooserBlock
 from wagtail.wagtailsearch import index
 
 
 class BlogIndexPage(Page):
+    parent_page_types = []
+    subpage_types = ['BlogPage']
+
     def get_context(self, request):
         context = super(BlogIndexPage, self).get_context(request)
         context['blog_entries'] = BlogPage.objects.child_of(self).live()
@@ -17,7 +22,12 @@ class BlogIndexPage(Page):
 
 
 class BlogPage(Page):
-    body = RichTextField()
+    body = StreamField([
+        ('heading', blocks.CharBlock(classname='full tiltie')),
+        ('paragraph', blocks.RichTextBlock()),
+        ('image', ImageChooserBlock()),
+    ])
+
     date = models.DateField('Post date')
     feed_image = models.ForeignKey(
         'wagtailimages.Image',
@@ -36,6 +46,7 @@ class BlogPage(Page):
         FieldPanel('date'),
         FieldPanel('body', classname='full'),
         InlinePanel('related_links', label='Related links'),
+        StreamFieldPanel('body'),
     ]
 
     promote_panels = [
